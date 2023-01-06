@@ -1,5 +1,5 @@
 node{
-      def dockerImageName= 'rajnikhattarrsinha/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
+      def dockerImageName= 'nidhisingh26/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
       stage('SCM Checkout'){
          git 'https://github.com/LovesCloud/java-groovy-docker'
       }
@@ -19,8 +19,8 @@ node{
       }  
    
       stage('Publish Docker Image'){
-         withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
-              sh "docker login -u rajnikhattarrsinha -p ${dockerPWD}"
+         withCredentials([string(credentialsId: 'dockerpwdnidhi', variable: 'dockerPWD')]) {
+              sh "docker login -u nidhisingh26 -p ${dockerPWD}"
          }
         sh "docker push ${dockerImageName}"
       }
